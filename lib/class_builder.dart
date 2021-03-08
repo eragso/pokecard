@@ -1,6 +1,7 @@
 import 'package:pokecard/home.dart';
 import 'package:pokecard/login.dart';
 import 'package:pokecard/mazo.dart';
+import 'package:pokecard/subecartas.dart';
 
 typedef T Constructor<T>();
 
@@ -17,6 +18,7 @@ class ClassBuilder {
     register<Home>(() => Home());
     register<AuthThreePage>(() => AuthThreePage());
     register<Mazo>(() => Mazo());
+    register<SubeCartas>(() => SubeCartas());
   }
 
   static dynamic fromString(String type) {

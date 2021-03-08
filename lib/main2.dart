@@ -4,6 +4,7 @@ import 'package:pokecard/class_builder.dart';
 import 'package:pokecard/home.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:pokecard/mazo.dart';
+import 'package:pokecard/subecartas.dart';
 
 //Clase principal
 class MainWidget extends StatefulWidget {
@@ -65,6 +66,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           icon: Icon(Icons.file_upload, color: Colors.white),
+          page: SubeCartas(),
         ),
         KFDrawerItem.initWithPage(
           text: Text(
