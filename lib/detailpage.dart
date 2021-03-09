@@ -17,16 +17,16 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          new Container(
+          Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(widget.imgPath), fit: BoxFit.cover)),
+                    image: AssetImage(widget.imgPath), fit: BoxFit.fill)),
           ),
-          new Padding(
+          Padding(
             padding: EdgeInsets.only(top: 25),
-            child: new Row(
+            child: Row(
               children: <Widget>[
                 new IconButton(
                   icon: Icon(
@@ -51,7 +51,7 @@ class _DetailPageState extends State<DetailPage> {
               ],
             ),
           ),
-          new Align(
+          Align(
             alignment: Alignment.bottomCenter,
             child: Container(
                 width: MediaQuery.of(context).size.width,
@@ -61,78 +61,10 @@ class _DetailPageState extends State<DetailPage> {
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
                   ),
-                  color: Color.fromRGBO(31, 58, 47, 1.0),
+                  color: Colors.blue,
                 ),
-                child: new Column(
+                child: Column(
                   children: <Widget>[
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        listItemStats('images/creative.png', "Mantis", false),
-                        listItemStats(
-                            'images/air-conditioner.png', "Hack", true),
-                        listItemStats(
-                            'images/washing-machine.png', "Weapons", false)
-                      ],
-                    ),
-                    Padding(
-                        padding: EdgeInsets.only(top: 5, left: 20, right: 20),
-                        child: Divider(
-                          color: Colors.white,
-                        )),
-                    SizedBox(height: 5),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            "Maximum Power",
-                            style: new TextStyle(color: Colors.white),
-                          ),
-                          Spacer(),
-                          Text(
-                            "60W",
-                            style: new TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            "Total Working Hours",
-                            style: new TextStyle(color: Colors.white),
-                          ),
-                          Spacer(),
-                          Text(
-                            "145",
-                            style: new TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            "Average Daily Working Hours",
-                            style: new TextStyle(color: Colors.white),
-                          ),
-                          Spacer(),
-                          Text(
-                            "5.6",
-                            style: new TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
                     Padding(
                         padding: EdgeInsets.only(top: 5, left: 20, right: 20),
                         child: Divider(
@@ -144,7 +76,7 @@ class _DetailPageState extends State<DetailPage> {
                         children: <Widget>[
                           Text(
                             "Day Schedule",
-                            style: new TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white),
                           ),
                           Spacer(),
                           Switch(
@@ -155,50 +87,13 @@ class _DetailPageState extends State<DetailPage> {
                                 print(newVal);
                               });
                             },
-                            activeColor: Colors.green,
+                            activeColor: Colors.blue,
                           )
                         ],
                       ),
                     ),
                   ],
                 )),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget listItemStats(String imgpath, String name, bool value) {
-    return Container(
-      width: 110,
-      height: 150,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color:
-              value == true ? Colors.white : Color.fromRGBO(75, 97, 88, 1.0)),
-      child: Column(
-        children: <Widget>[
-          SizedBox(height: 20),
-          Image(
-              image: AssetImage(imgpath),
-              width: 45,
-              height: 45,
-              color: value == true ? Colors.black : Colors.white),
-          SizedBox(height: 15),
-          Text(name,
-              style: TextStyle(
-                  fontSize: 13,
-                  color: value == true ? Colors.black : Colors.white)),
-          SizedBox(height: 5),
-          Switch(
-            value: value,
-            onChanged: (newVal) {
-              setState(() {
-                value = newVal;
-                print(newVal);
-              });
-            },
-            activeColor: Colors.green,
           )
         ],
       ),
