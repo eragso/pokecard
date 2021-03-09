@@ -10,7 +10,7 @@ class Mazo extends KFDrawerContent {
 }
 
 class _Mazo extends State<Mazo> {
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -174,7 +174,8 @@ class _Mazo extends State<Mazo> {
       child: Container(
         width: 145,
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.cover),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.fill),
         ),
       ),
     );
@@ -185,7 +186,6 @@ class _Mazo extends State<Mazo> {
         SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.only(left: 8.0, bottom: 0),
-
         ),
       ],
     );

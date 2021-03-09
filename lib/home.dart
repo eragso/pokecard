@@ -14,11 +14,14 @@ class Home extends KFDrawerContent {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ListView(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
+    return Scaffold(
+      body: Center(
+      child: Container(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ), 
+        child: ListView(
+          children: <Widget>[
               Row(
                 children: <Widget>[
                   ClipRRect(
@@ -36,141 +39,240 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   Spacer(),
+                  Text("Menu Principal", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+                  Spacer(),
                   Container(
                     height: 40,
                     width: 40,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
-                            image: AssetImage('images/descarga.jpg'),
-                            fit: BoxFit.cover)),
+                          image: AssetImage('images/descarga.jpg'),
+                          fit: BoxFit.cover)),
                   ),
                   SizedBox(width: 15)
                 ],
-              ),
+              ), 
               Padding(
-                padding: EdgeInsets.all(15),
+                padding: EdgeInsets.only(left: 15, top: 5, right: 200),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        height: 50,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                        border: Border.all(width: 5.0, color: Colors.red),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Colors.red,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text("Noticias", style: TextStyle(fontSize: 30.0, color: Colors.yellow), 
+                            ),
+                          ]
+                        ),
+                    )
+                  ],
+                ),
+              ),  
+              Padding(
+                padding: EdgeInsets.only(left: 15, top: 0, right: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Text("Benvingut", style: TextStyle(fontSize: 17)),
-                      ],
-                    ),
-                    SizedBox(height: 30),
-                    Text("Joan Vizcaino",
-                        style: TextStyle(
-                            fontSize: 19, fontWeight: FontWeight.bold)),
-                    SizedBox(height: 15),
-                    Text(
-                      "CD Projekt vuelve a hacerlo, a ir más lejos que nadie y a sentar las bases de la excelencia para los próximos años.",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    SizedBox(height: 30),
-                    Text("Fotos",
-                        style: TextStyle(
-                            fontSize: 19, fontWeight: FontWeight.bold)),
-                    SizedBox(height: 15),
                     Container(
-                        height: 300,
+                        height: 150,
                         width: double.infinity,
-                        child: ListView(
+                        decoration: BoxDecoration(
+                        border: Border.all(width: 5.0, color: Colors.red),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Colors.blue[900],
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                          Container(
+                          padding: EdgeInsets.only(top: 13),
+                          height: 120,
+                          child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            listItem('images/cyber.jpg'),
+                            new SizedBox(width: 7),
+                            listItem('images/news.png'),
                             new SizedBox(width: 15),
-                            listItem('images/cyber2.jpg'),
-                            new SizedBox(width: 5),
-                            listItem('images/img7.jpg'),
+                            listItem('images/leyendas.jpg'),
                           ],
-                        )),
-                    SizedBox(height: 15),
-                    Text("Stats",
-                        style: TextStyle(
-                            fontSize: 19, fontWeight: FontWeight.bold)),
+                        )
+                            ),
+                          ], 
+                        ), 
+                        ), 
+                  ],
+                ), 
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 15, top: 15, right: 200),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        height: 50,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                        border: Border.all(width: 5.0, color: Colors.red),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Colors.red,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text("Mercado", style: TextStyle(fontSize: 30.0, color: Colors.yellow), 
+                            ),
+                          ]
+                        ),
+                    )
                   ],
                 ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                  ),
-                  color: Color.fromRGBO(0, 62, 234, 1.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              ),  
+              Padding(
+                padding: EdgeInsets.only(left: 15, top: 0, right: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    listItemStats('images/creative.png', "Mantis", false),
-                    listItemStats('images/air-conditioner.png', "Hack", true),
-                    listItemStats(
-                        'images/washing-machine.png', "Weapons", false)
+                    Container(
+                        height: 150,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                        border: Border.all(width: 5.0, color: Colors.red),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Colors.blue[900],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                          Container(
+                          padding: EdgeInsets.only(top: 5),
+                          height: 120,
+                          child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            new SizedBox(width: 7),
+                            listCard('images/incineroar.png'),
+                            new SizedBox(width: 10),
+                            listCard('images/mcharizardex.png'),
+                            new SizedBox(width: 10),
+                            listCard('images/ponyta.png'),
+                            new SizedBox(width: 10),
+                            listCard('images/ponyta.png'),
+                          ],
+                        )
+                            ),
+                          ], 
+                        ), 
+                        ), 
+                  ],
+                ), 
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 15, top: 15, right: 200),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        height: 50,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                        border: Border.all(width: 5.0, color: Colors.red),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Colors.red,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text("Eventos", style: TextStyle(fontSize: 30.0, color: Colors.yellow), 
+                            ),
+                          ]
+                        ),
+                    )
                   ],
                 ),
+              ),  
+              Padding(
+                padding: EdgeInsets.only(left: 15, top: 0, right: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                        height: 150,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                        border: Border.all(width: 5.0, color: Colors.red),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Colors.blue[900],
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                          Container(
+                          padding: EdgeInsets.only(top: 13),
+                          height: 120,
+                          child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            new SizedBox(width: 7),
+                            listItem('images/e_leyendas.jpeg'),
+                            new SizedBox(width: 15),
+                            listItem('images/e_2021.jpg'),
+                          ],
+                        )
+                            ),
+                          ], 
+                        ), 
+                        ), 
+                  ],
+                ), 
               ),
-            ],
-          ),
         ],
       ),
+    )
+    )
     );
   }
 
-  Widget listItem(String imgpath) {
+  Widget listCard(String imgpath) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => DetailPage(
-                  imgPath: imgpath,
-                )));
+          builder: (context) => DetailPage(imgPath: imgpath,)));
       },
       child: Container(
-        width: 150,
+        width: 70,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.cover),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.fill),
         ),
       ),
     );
   }
-
-  Widget listItemStats(String imgpath, String name, bool value) {
-    return Container(
-      width: 110,
-      height: 150,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color: value == true
-              ? Color.fromRGBO(212, 73, 77, 1.0)
-              : Color.fromRGBO(212, 73, 77, 1.0)),
-      child: Column(
-        children: <Widget>[
-          SizedBox(height: 20),
-          Image(
-              image: AssetImage(imgpath),
-              width: 45,
-              height: 45,
-              color: value == true ? Colors.white : Colors.white),
-          SizedBox(height: 15),
-          Text(name,
-              style: TextStyle(
-                  fontSize: 13,
-                  color: value == true ? Colors.white : Colors.white)),
-          SizedBox(height: 5),
-          Switch(
-            value: value,
-            onChanged: (newVal) {
-              setState(() {
-                value = newVal;
-                print(newVal);
-              });
-            },
-            activeColor: Colors.blue,
-          )
-        ],
+    Widget listItem(String imgpath) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => DetailPage(imgPath: imgpath,)));
+      },
+      child: Container(
+        width: 145,
+        decoration: BoxDecoration(
+          border: Border.all(width: 4.0, color: Colors.yellow),
+          borderRadius: BorderRadius.all(Radius.circular(0)),
+          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.fill),
+        ),
       ),
     );
   }

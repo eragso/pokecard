@@ -64,6 +64,10 @@ flutter:
     - images/incineroar.png
     - images/mcharizardex.png
     - images/ponyta.png
+    - images/news.png
+    - images/leyendas.jpg
+    - images/e_leyendas.jpeg
+    - images/e_2021.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

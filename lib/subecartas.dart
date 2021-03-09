@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokecard/detailpage.dart';
 import 'package:kf_drawer/kf_drawer.dart';
-import 'package:dio/dio.dart';
 
 class SubeCartas extends KFDrawerContent {
   @override
@@ -56,34 +55,28 @@ class _SubeCartas extends State<SubeCartas> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                        height: 300,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
+                      height: 241,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
                         border: Border.all(width: 5.0, color: Colors.red),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Colors.blue[900],
                         ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                          Container(
-                          padding: EdgeInsets.only(top: 13),
-                          height: 220,
-                          child: ListView(
-                          scrollDirection: Axis.horizontal,
+                        child: Row(
                           children: <Widget>[
-                            new SizedBox(width: 7),
-                            listItem('images/incineroar.png'),
-                            new SizedBox(width: 15),
-                            listItem('images/mcharizardex.png'),
-                            new SizedBox(width: 15),
-                            listItem('images/ponyta.png'),
-                          ],
-                        )
+                            Column(
+                              children: <Widget>[
+                                Text('We   '),
+                              ]
                             ),
-                          ], 
-                        ), 
+                            Column(
+                              children: <Widget>[
+                                Text('We move under cover and we move as one'),
+                                Text('We move under cover and we move as one'),
+                              ]
+                            ),
+                            ],
+                        ),
                         ), 
                   ],
                 ), 
@@ -101,8 +94,24 @@ class _SubeCartas extends State<SubeCartas> {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Colors.blue[900],
                         ),
-                        child: Row(
-                          
+                        child: Column(
+                          children: <Widget>[
+                            Text('Ataques', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,)),
+                            Row( children: [
+                            Column(
+                              children: <Widget>[
+                                Text('Nombre'),
+                                Text('Nombre'),
+                                Text('Nombre'),
+                                Text('Nombre'),
+                              ]
+                            ),
+                            Column(
+                              children: <Widget>[
+                                Text('Land'),
+                              ]
+                            ),], ),
+                            ],
                         ),
                         ), 
                   ],
@@ -163,7 +172,8 @@ class _SubeCartas extends State<SubeCartas> {
       child: Container(
         width: 145,
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.cover),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.fill),
         ),
       ),
     );
