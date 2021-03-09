@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-
+/*          new Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(widget.imgPath), fit: BoxFit.cover)),
+          ),*/
 class DetailPage extends StatefulWidget {
   final imgPath;
 
@@ -15,19 +21,14 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Container(
-            color: Colors.blue,
-            /*height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(widget.imgPath), fit: BoxFit.fill)),*/
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 25),
-            child: Row(
+      body: Center(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          ), 
+        child: ListView(
+          children: <Widget>[
+            new Row(
               children: <Widget>[
                 new IconButton(
                   icon: Icon(
@@ -51,8 +52,7 @@ class _DetailPageState extends State<DetailPage> {
                 SizedBox(width: 15)
               ],
             ),
-          ),
-            Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 15, top: 5, right: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,13 +69,42 @@ class _DetailPageState extends State<DetailPage> {
                           children: <Widget>[
                             Column(
                               children: <Widget>[
-                                Text('We   '),
+                                new Padding(
+                                  padding: EdgeInsets.only(left: 5, top: 5, right: 5),
+                                  child: Container(
+                                  height: 221,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    image: DecorationImage(
+                                      image: AssetImage(widget.imgPath), fit: BoxFit.fill)),
+                                ),
+                                ),
                               ]
                             ),
                             Column(
                               children: <Widget>[
-                                Text('We move under cover and we move as one'),
-                                Text('We move under cover and we move as one'),
+                                new Padding(
+                                padding: EdgeInsets.only(left: 5, top: 5, right: 5),
+                                child: Container(
+                                  height: 221,
+                                  width: 200,
+                                  color: Colors.yellow,
+                                  child: Column(
+                                    children: <Widget> [
+                            Row( children: [
+                            Column(
+                              children: <Widget>[
+                                Text('Nombre'),
+                                Text('Nombre'),
+                                Text('Nombre'),
+                                Text('Nombre'),
+                              ]
+                            ),], ),
+                                    ],
+                                  ),
+                                )
+                                ),
                               ]
                             ),
                             ],
@@ -126,7 +155,7 @@ class _DetailPageState extends State<DetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(left: 10, top: 15, right: 10, bottom: 15),
+                      padding: EdgeInsets.only(left: 16, top: 15, right: 10, bottom: 15),
                       height: 120,
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -134,25 +163,41 @@ class _DetailPageState extends State<DetailPage> {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Colors.blue[900],
                       ),
-                      child: Column(
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                           height: 80,
-                          width: 300,
+                          width: 130,
                           child: RaisedButton(
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40.0),
+                              borderRadius: BorderRadius.circular(20.0),
                               side: BorderSide(color: Colors.red)
                             ),
                             color: Colors.red,
                             textColor: Colors.yellow,
-                            child: Text("Subir", style: TextStyle(fontSize: 30.0,),
+                            child: Text("Comprar", style: TextStyle(fontSize: 25.0,),
                             ),
- 
+                            onPressed: () {},
                           )
-                            ),
+                            ), 
+                            SizedBox(width: 25),
+                            Container(
+                              height: 80,
+                              width: 130,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  side: BorderSide(color: Colors.red)
+                                ),
+                                color: Colors.red,
+                                textColor: Colors.yellow,
+                                child: Text("Vender", style: TextStyle(fontSize: 25.0,),
+                                ),
+                                onPressed: () {},
+                              )
+                            )
                           ], 
                         ), 
                         ), 
@@ -161,6 +206,8 @@ class _DetailPageState extends State<DetailPage> {
               ),
         ],
       ),
+    )
+    )
     );
   }
   Widget listCard(String imgpath) {

@@ -140,7 +140,7 @@ class _SubeCartas extends State<SubeCartas> {
                           width: 300,
                           child: RaisedButton(
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40.0),
+                              borderRadius: BorderRadius.circular(20.0),
                               side: BorderSide(color: Colors.red)
                             ),
                             color: Colors.red,
