@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class DetailPage extends StatefulWidget {
+class InfoPage extends StatefulWidget {
   final imgPath;
 
-  DetailPage({Key key, this.imgPath}) : super(key: key);
+  InfoPage({Key key, this.imgPath}) : super(key: key);
 
   @override
-  _DetailPageState createState() => _DetailPageState();
+  _InfoPage createState() => _InfoPage();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _InfoPage extends State<InfoPage> {
   bool tempValue = false;
 
   @override
@@ -52,7 +52,7 @@ class _DetailPageState extends State<DetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      height: 420,
+                      height: 241,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         border: Border.all(width: 5.0, color: Colors.red),
@@ -64,15 +64,14 @@ class _DetailPageState extends State<DetailPage> {
                             Column(
                               children: <Widget>[
                                 new Padding(
-                                  padding: EdgeInsets.only(left: 34, top: 26, right: 0),
+                                  padding: EdgeInsets.only(left: 9, top: 7.5, right: 5),
                                   child: Container(
-                                  height: 350,
-                                  width: 250,
+                                  height: 211,
+                                  width: 300,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     image: DecorationImage(
-                                      image: AssetImage(widget.imgPath), fit: BoxFit.fill)),
-                                ),
+                                      image: AssetImage(widget.imgPath), fit: BoxFit.fill))),
                                 ),
                               ]
                             ),
@@ -88,51 +87,28 @@ class _DetailPageState extends State<DetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(left: 16, top: 15, right: 10, bottom: 15),
-                      height: 120,
+                      height: 241,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         border: Border.all(width: 5.0, color: Colors.red),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Colors.blue[900],
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                          height: 80,
-                          width: 130,
-                          child: RaisedButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                              side: BorderSide(color: Colors.red)
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                            padding: EdgeInsets.only(top: 5),
+                            child: Column( children: [
+                            Text('TITULO', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,)),
+                            ],),
                             ),
-                            color: Colors.red,
-                            textColor: Colors.yellow,
-                            child: Text("Comprar", style: TextStyle(fontSize: 25.0,),
-                            ),
-                            onPressed: () {},
-                          )
-                            ), 
-                            SizedBox(width: 25),
-                            Container(
-                              height: 80,
-                              width: 130,
-                              child: RaisedButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  side: BorderSide(color: Colors.red)
-                                ),
-                                color: Colors.red,
-                                textColor: Colors.yellow,
-                                child: Text("Vender", style: TextStyle(fontSize: 25.0,),
-                                ),
-                                onPressed: () {},
-                              )
-                            )
-                          ], 
-                        ), 
+                            Padding( 
+                            padding: EdgeInsets.only(left: 5, top: 5, right: 5),
+                            child: Row( children: [
+                              Text('INFOoooooooooooooooooooooooooooooooooo \nMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'),
+                              ], ), ),
+                            ],
+                        ),
                         ), 
                   ],
                 ), 
@@ -145,10 +121,7 @@ class _DetailPageState extends State<DetailPage> {
   }
   Widget listCard(String imgpath) {
     return InkWell(
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => DetailPage(imgPath: imgpath,)));
-      },
+      onTap: () {  },
       child: Container(
         width: 70,
         decoration: BoxDecoration(

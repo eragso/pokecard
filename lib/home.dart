@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokecard/detailpage.dart';
+import 'package:pokecard/infocard.dart';
 import 'package:kf_drawer/kf_drawer.dart';
+import 'package:pokecard/infopage.dart';
 
 class Home extends KFDrawerContent {
   Home({
@@ -29,18 +30,15 @@ class _HomeState extends State<Home> {
                     child: Material(
                       shadowColor: Colors.transparent,
                       color: Colors.transparent,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.menu,
-                          color: Colors.black,
-                        ),
+                      child: FlatButton(
                         onPressed: widget.onMenuPressed,
-                      ),
+                        padding: EdgeInsets.all(0.0),
+                        child: Image.asset('images/pokeball.png', height: 40, width: 40,))
                     ),
                   ),
-                  Spacer(),
+                  Spacer(flex: 2),
                   Text("Menu Principal", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
-                  Spacer(),
+                  Spacer(flex: 4),
                   Container(
                     height: 40,
                     width: 40,
@@ -249,7 +247,7 @@ class _HomeState extends State<Home> {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => DetailPage(imgPath: imgpath,)));
+          builder: (context) => InfoCard(imgPath: imgpath,)));
       },
       child: Container(
         width: 70,
@@ -264,7 +262,7 @@ class _HomeState extends State<Home> {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => DetailPage(imgPath: imgpath,)));
+          builder: (context) => InfoPage(imgPath: imgpath,)));
       },
       child: Container(
         width: 145,

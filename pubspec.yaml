@@ -50,17 +50,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/logo.png
-    - images/image.jpg
-    - images/picture1.jpg
-    - images/air-conditioner.png
-    - images/creative.png
-    - images/washing-machine.png
     - images/descarga.jpg
-    - images/FondoPantalla.jpg
-    - images/cyber.jpg
-    - images/cyber2.jpg
-    - images/cyber3.jpg
-    - images/unnamed.png
     - images/incineroar.png
     - images/mcharizardex.png
     - images/ponyta.png
@@ -68,6 +58,9 @@ flutter:
     - images/leyendas.jpg
     - images/e_leyendas.jpeg
     - images/e_2021.jpg
+    - images/pokeball.png
+    - images/pokeball.gif
+    - images/pokecard.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

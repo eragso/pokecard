@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokecard/detailpage.dart';
+import 'package:pokecard/infocard.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_search/easy_search.dart';
@@ -27,18 +27,15 @@ class _Mazo extends State<Mazo> {
                     child: Material(
                       shadowColor: Colors.transparent,
                       color: Colors.transparent,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.menu,
-                          color: Colors.black,
-                        ),
+                      child: FlatButton(
                         onPressed: widget.onMenuPressed,
-                      ),
+                        padding: EdgeInsets.all(0.0),
+                        child: Image.asset('images/pokeball.png', height: 40, width: 40,))
                     ),
                   ),
-                  Spacer(),
-                  Text("Forma tu mazo de ensueño!", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
-                  Spacer(),
+                  Spacer(flex: 2),
+                  Text("Forma tu mazo!", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+                  Spacer(flex: 4),
                   Container(
                     height: 40,
                     width: 40,
@@ -169,7 +166,7 @@ class _Mazo extends State<Mazo> {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => DetailPage(imgPath: imgpath,)));
+            builder: (context) => InfoCard(imgPath: imgpath,)));
       },
       child: Container(
         width: 145,
