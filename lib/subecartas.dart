@@ -66,13 +66,43 @@ class _SubeCartas extends State<SubeCartas> {
                           children: <Widget>[
                             Column(
                               children: <Widget>[
-                                Text('We   '),
+                                new Padding(
+                                  padding: EdgeInsets.only(left: 5, top: 5, right: 5),
+                                  child: Container(
+                                  height: 221,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    image: DecorationImage(
+                                      image: AssetImage('images/incineroar.png'), fit: BoxFit.fill)),
+                                ),
+                                ),
                               ]
                             ),
                             Column(
                               children: <Widget>[
-                                Text('We move under cover and we move as one'),
-                                Text('We move under cover and we move as one'),
+                                new Padding(
+                                padding: EdgeInsets.only(left: 5, top: 5, right: 5),
+                                child: Container(
+                                  height: 221,
+                                  width: 200,
+                                  color: Colors.yellow,
+                                  child: Column(
+                                    children: <Widget> [
+                                      Row( children: [
+                                      Column(
+                                        children: <Widget>[
+                                          Text('Nombre', style: TextStyle(fontSize: 40.0,)),
+                                          SizedBox(height: 30),
+                                          Text('Nombre'),
+                                          Text('Nombre'),
+                                          Text('Nombre'),
+                                        ]
+                                      ),], ),
+                                    ],
+                                  ),
+                                )
+                                ),
                               ]
                             ),
                             ],
@@ -123,7 +153,7 @@ class _SubeCartas extends State<SubeCartas> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(left: 10, top: 15, right: 10, bottom: 15),
+                      padding: EdgeInsets.only(left: 16, top: 15, right: 10, bottom: 15),
                       height: 120,
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -131,13 +161,13 @@ class _SubeCartas extends State<SubeCartas> {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Colors.blue[900],
                       ),
-                      child: Column(
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                           height: 80,
-                          width: 300,
+                          width: 130,
                           child: RaisedButton(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
@@ -145,11 +175,27 @@ class _SubeCartas extends State<SubeCartas> {
                             ),
                             color: Colors.red,
                             textColor: Colors.yellow,
-                            child: Text("Subir", style: TextStyle(fontSize: 30.0,),
+                            child: Text("Comprar", style: TextStyle(fontSize: 25.0,),
                             ),
-                            onPressed: widget.onMenuPressed,
+                            onPressed: () {},
                           )
-                            ),
+                            ), 
+                            SizedBox(width: 25),
+                            Container(
+                              height: 80,
+                              width: 130,
+                              child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  side: BorderSide(color: Colors.red)
+                                ),
+                                color: Colors.red,
+                                textColor: Colors.yellow,
+                                child: Text("Vender", style: TextStyle(fontSize: 25.0,),
+                                ),
+                                onPressed: () {},
+                              )
+                            )
                           ], 
                         ), 
                         ), 
@@ -162,15 +208,14 @@ class _SubeCartas extends State<SubeCartas> {
     )
     );
   }
-
-  Widget listItem(String imgpath) {
+  Widget listCard(String imgpath) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => DetailPage(imgPath: imgpath,)));
+          builder: (context) => DetailPage(imgPath: imgpath,)));
       },
       child: Container(
-        width: 145,
+        width: 70,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.fill),

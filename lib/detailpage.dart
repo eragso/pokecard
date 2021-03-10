@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-/*          new Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(widget.imgPath), fit: BoxFit.cover)),
-          ),*/
+
 class DetailPage extends StatefulWidget {
   final imgPath;
 
@@ -58,7 +52,7 @@ class _DetailPageState extends State<DetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      height: 241,
+                      height: 420,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         border: Border.all(width: 5.0, color: Colors.red),
@@ -70,10 +64,10 @@ class _DetailPageState extends State<DetailPage> {
                             Column(
                               children: <Widget>[
                                 new Padding(
-                                  padding: EdgeInsets.only(left: 5, top: 5, right: 5),
+                                  padding: EdgeInsets.only(left: 34, top: 26, right: 0),
                                   child: Container(
-                                  height: 221,
-                                  width: 100,
+                                  height: 350,
+                                  width: 250,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     image: DecorationImage(
@@ -82,31 +76,6 @@ class _DetailPageState extends State<DetailPage> {
                                 ),
                               ]
                             ),
-                            Column(
-                              children: <Widget>[
-                                new Padding(
-                                padding: EdgeInsets.only(left: 5, top: 5, right: 5),
-                                child: Container(
-                                  height: 221,
-                                  width: 200,
-                                  color: Colors.yellow,
-                                  child: Column(
-                                    children: <Widget> [
-                            Row( children: [
-                            Column(
-                              children: <Widget>[
-                                Text('Nombre'),
-                                Text('Nombre'),
-                                Text('Nombre'),
-                                Text('Nombre'),
-                              ]
-                            ),], ),
-                                    ],
-                                  ),
-                                )
-                                ),
-                              ]
-                            ),
                             ],
                         ),
                         ), 
@@ -114,43 +83,7 @@ class _DetailPageState extends State<DetailPage> {
                 ), 
               ),
               Padding(
-                padding: EdgeInsets.only(left: 15, top: 5, right: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      height: 241,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 5.0, color: Colors.red),
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Colors.blue[900],
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Text('Ataques', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,)),
-                            Row( children: [
-                            Column(
-                              children: <Widget>[
-                                Text('Nombre'),
-                                Text('Nombre'),
-                                Text('Nombre'),
-                                Text('Nombre'),
-                              ]
-                            ),
-                            Column(
-                              children: <Widget>[
-                                Text('Land'),
-                              ]
-                            ),], ),
-                            ],
-                        ),
-                        ), 
-                  ],
-                ), 
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 15, top: 5, right: 15),
+                padding: EdgeInsets.only(left: 15, top: 15, right: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
