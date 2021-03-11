@@ -73,7 +73,7 @@ class _Mazo extends State<Mazo> {
                               },
                               onSearch: (text) {
                                 print('Filter Query: $text');
-                                return getData(name: text);
+                                return getData(nombre: text);
                               },
                               searchResultSettings: SearchResultSettings(
                                 padding: EdgeInsets.only(left: 8.0, top: 0, right: 8.0),
@@ -89,8 +89,8 @@ class _Mazo extends State<Mazo> {
                                         ),
                                   child: ListTile(
                                     selected: isSelected,
-                                    title: Text(item.name),
-                                    subtitle: Text(item.age.toString()),
+                                    title: Text(item.nombre),
+                                    subtitle: Text(item.tipo.toString()),
                                     leading: Icon(Icons.people),
                                   ),
                                 ); 
@@ -188,10 +188,11 @@ class _Mazo extends State<Mazo> {
     );
   }
 
-  Future<List<ModelExample>> getData({name}) async {
+  Future<List<ModelExample>> getData({nombre}) async {
     var response = await Dio().get(
-      "https://5f24717b3b9d35001620456b.mockapi.io/user",
-      queryParameters: {"name": name},
+      "http://estanteriaserver.ddns.net/api/Cartas",
+      //"https://5f24717b3b9d35001620456b.mockapi.io/user",
+      queryParameters: {"nombre": nombre},
     );
 
     var result = ModelExample.fromJsonList(response.data);
@@ -200,21 +201,21 @@ class _Mazo extends State<Mazo> {
 }
 
 class ModelExample {
-  final String name;
-  final int age;
+  final String nombre;
+  final String tipo;
 
-  ModelExample({this.name, this.age});
+  ModelExample({this.nombre, this.tipo});
 
   @override
   String toString() {
-    return '$name $age';
+    return '$nombre';
   }
 
   factory ModelExample.fromJson(Map<String, dynamic> json) {
     if (json == null) return null;
     return ModelExample(
-      name: json["name"],
-      age: json["age"],
+      nombre: json["nombre"],
+      tipo: json["tipo"],
     );
   }
 
@@ -224,8 +225,8 @@ class ModelExample {
   }
 
   @override
-  operator ==(object) => this.name.toLowerCase().contains(object.toLowerCase()) || this.age.toString().contains(object);
+  operator ==(object) => this.nombre.toLowerCase().contains(object.toLowerCase()) || this.tipo.toLowerCase().contains(object.toLowerCase);
 
   @override
-  int get hashCode => name.hashCode ^ age.hashCode;
+  int get hashCode => nombre.hashCode ^ tipo.hashCode;
 }  
