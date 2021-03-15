@@ -34,16 +34,16 @@ class _Mazo extends State<Mazo> {
                     ),
                   ),
                   Spacer(flex: 2),
-                  Text("Forma tu mazo!", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+                  Text("Menu Principal", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
                   Spacer(flex: 4),
                   Container(
                     height: 40,
-                    width: 40,
+                    width: 70,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
-                            image: AssetImage('images/descarga.jpg'),
-                            fit: BoxFit.cover)),
+                          image: AssetImage('images/pokecard.png'),
+                          fit: BoxFit.fill)),
                   ),
                   SizedBox(width: 15)
                 ],
@@ -73,7 +73,7 @@ class _Mazo extends State<Mazo> {
                               },
                               onSearch: (text) {
                                 print('Filter Query: $text');
-                                return getData(nombre: text);
+                                return getData(nombre_carta: text);
                               },
                               searchResultSettings: SearchResultSettings(
                                 padding: EdgeInsets.only(left: 8.0, top: 0, right: 8.0),
@@ -89,8 +89,8 @@ class _Mazo extends State<Mazo> {
                                         ),
                                   child: ListTile(
                                     selected: isSelected,
-                                    title: Text(item.nombre),
-                                    subtitle: Text(item.tipo.toString()),
+                                    title: Text(item.nombre_carta),
+                                    subtitle: Text(item.tipo_carta.toString()),
                                     leading: Icon(Icons.people),
                                   ),
                                 ); 
@@ -188,11 +188,11 @@ class _Mazo extends State<Mazo> {
     );
   }
 
-  Future<List<ModelExample>> getData({nombre}) async {
+  Future<List<ModelExample>> getData({nombre_carta}) async {
     var response = await Dio().get(
       "http://estanteriaserver.ddns.net/api/Cartas",
       //"https://5f24717b3b9d35001620456b.mockapi.io/user",
-      queryParameters: {"nombre": nombre},
+      queryParameters: {"nombre_carta": nombre_carta},
     );
 
     var result = ModelExample.fromJsonList(response.data);
@@ -201,21 +201,21 @@ class _Mazo extends State<Mazo> {
 }
 
 class ModelExample {
-  final String nombre;
-  final String tipo;
+  final String nombre_carta;
+  final String tipo_carta;
 
-  ModelExample({this.nombre, this.tipo});
+  ModelExample({this.nombre_carta, this.tipo_carta});
 
   @override
   String toString() {
-    return '$nombre';
+    return '$nombre_carta';
   }
 
   factory ModelExample.fromJson(Map<String, dynamic> json) {
     if (json == null) return null;
     return ModelExample(
-      nombre: json["nombre"],
-      tipo: json["tipo"],
+      nombre_carta: json["nombre_carta"],
+      tipo_carta: json["tipo_carta"],
     );
   }
 
@@ -225,8 +225,8 @@ class ModelExample {
   }
 
   @override
-  operator ==(object) => this.nombre.toLowerCase().contains(object.toLowerCase()) || this.tipo.toLowerCase().contains(object.toLowerCase);
+  operator ==(object) => this.nombre_carta.toLowerCase().contains(object.toLowerCase()) || this.tipo_carta.toLowerCase().contains(object.toLowerCase);
 
   @override
-  int get hashCode => nombre.hashCode ^ tipo.hashCode;
+  int get hashCode => nombre_carta.hashCode ^ tipo_carta.hashCode;
 }  

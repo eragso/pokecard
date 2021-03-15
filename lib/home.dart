@@ -36,17 +36,17 @@ class _HomeState extends State<Home> {
                         child: Image.asset('images/pokeball.png', height: 40, width: 40,))
                     ),
                   ),
-                  Spacer(flex: 2),
+                  Spacer(flex:4),
                   Text("Menu Principal", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
                   Spacer(flex: 4),
                   Container(
                     height: 40,
-                    width: 40,
+                    width: 70,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
-                          image: AssetImage('images/descarga.jpg'),
-                          fit: BoxFit.cover)),
+                          image: AssetImage('images/pokecard.png'),
+                          fit: BoxFit.fill)),
                   ),
                   SizedBox(width: 15)
                 ],

@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pokecard/cartas.dart';
 import 'package:pokecard/class_builder.dart';
 import 'package:pokecard/home.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:pokecard/mazo.dart';
+import 'package:pokecard/settings.dart';
 import 'package:pokecard/subecartas.dart';
 
 //Clase principal
@@ -51,6 +53,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           icon: Icon(Icons.info, color: Colors.white),
+          page: Cartas(),
         ),
         KFDrawerItem.initWithPage(
           text: Text(
@@ -74,6 +77,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           icon: Icon(Icons.settings, color: Colors.white),
+          page: Settings(),
         ),
       ],
     );
@@ -123,7 +127,9 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
           text: Text(
             'Cerrar sesión',
             style: TextStyle(color: Colors.white, fontSize: 18),
-          ),
+          ),onPressed: () {
+              Navigator.of(context).pop();
+            },
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
