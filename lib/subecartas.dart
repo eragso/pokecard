@@ -32,7 +32,7 @@ class _SubeCartas extends State<SubeCartas> {
                     ),
                   ),
                   Spacer(flex: 2),
-                  Text("Menu Principal", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+                  Text("Sube Cartas", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
                   Spacer(flex: 4),
                   Container(
                     height: 40,

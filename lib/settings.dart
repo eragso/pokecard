@@ -41,7 +41,7 @@ class _Settings extends State<Settings>  {
                     ),
                   ),
                   Spacer(flex: 2),
-                  Text("Menu Principal", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+                  Text("Configuración", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
                   Spacer(flex: 4),
                   Container(
                     height: 40,
