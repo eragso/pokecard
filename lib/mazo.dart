@@ -89,8 +89,8 @@ class _Mazo extends State<Mazo> {
                                         ),
                                   child: ListTile(
                                     selected: isSelected,
-                                    title: Text(item.nombre_carta),
-                                    subtitle: Text(item.tipo_carta.toString()),
+                                    title: Text(item.nombrecarta),
+                                    subtitle: Text(item.tipocarta.toString()),
                                     leading: Icon(Icons.people),
                                   ),
                                 ); 
@@ -201,21 +201,21 @@ class _Mazo extends State<Mazo> {
 }
 
 class ModelExample {
-  final String nombre_carta;
-  final String tipo_carta;
+  final String nombrecarta;
+  final String tipocarta;
 
-  ModelExample({this.nombre_carta, this.tipo_carta});
+  ModelExample({this.nombrecarta, this.tipocarta});
 
   @override
   String toString() {
-    return '$nombre_carta';
+    return '$nombrecarta';
   }
 
   factory ModelExample.fromJson(Map<String, dynamic> json) {
     if (json == null) return null;
     return ModelExample(
-      nombre_carta: json["nombre_carta"],
-      tipo_carta: json["tipo_carta"],
+      nombrecarta: json["nombre_carta"],
+      tipocarta: json["tipo_carta"],
     );
   }
 
@@ -225,8 +225,8 @@ class ModelExample {
   }
 
   @override
-  operator ==(object) => this.nombre_carta.toLowerCase().contains(object.toLowerCase()) || this.tipo_carta.toLowerCase().contains(object.toLowerCase);
+  operator ==(object) => this.nombrecarta.toLowerCase().contains(object.toLowerCase()) || this.tipocarta.toLowerCase().contains(object.toLowerCase);
 
   @override
-  int get hashCode => nombre_carta.hashCode ^ tipo_carta.hashCode;
+  int get hashCode => nombrecarta.hashCode ^ tipocarta.hashCode;
 }  

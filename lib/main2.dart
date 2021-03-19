@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pokecard/api/apihome.dart';
+import 'package:pokecard/api/flutterapi.dart';
 import 'package:pokecard/cartas.dart';
 import 'package:pokecard/class_builder.dart';
 import 'package:pokecard/home.dart';
@@ -31,7 +33,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
           text:
               Text('Menu', style: TextStyle(color: Colors.white, fontSize: 18)),
           icon: Icon(Icons.home, color: Colors.white),
-          page: Home(),
+          page: Home()
         ),
         KFDrawerItem.initWithPage(
           text: Text(
@@ -39,6 +41,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           icon: Icon(Icons.map, color: Colors.white),
+          page: ApiHome(),
         ),
         KFDrawerItem.initWithPage(
           text: Text(
@@ -46,6 +49,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           icon: Icon(Icons.qr_code_scanner, color: Colors.white),
+          page: FlutterApi(),
         ),
         KFDrawerItem.initWithPage(
           text: Text(
