@@ -4,6 +4,8 @@ import 'package:pokecard/mazo.dart';
 import 'package:pokecard/subecartas.dart';
 import 'package:pokecard/settings.dart';
 import 'package:pokecard/cartas.dart';
+import 'package:pokecard/api/apihome.dart';
+import 'package:pokecard/api/flutterapi.dart';
 
 typedef T Constructor<T>();
 
@@ -23,6 +25,8 @@ class ClassBuilder {
     register<SubeCartas>(() => SubeCartas());
     register<Settings>(() => Settings());
     register<Cartas>(() => Cartas());
+    register<ApiHome>(() => ApiHome());
+    register<FlutterApi>(() => FlutterApi());
   }
 
   static dynamic fromString(String type) {
