@@ -29,7 +29,7 @@ class DBProvider {
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
       await db.execute('CREATE TABLE Employee('
-          'id INTEGER PRIMARY KEY,'
+          'id_carta INTEGER PRIMARY KEY,'
           'email TEXT,'
           'firstName TEXT,'
           'lastName TEXT'
@@ -56,7 +56,7 @@ class DBProvider {
 
   Future<List<Employee>> getAllEmployees() async {
     final db = await database;
-    final res = await db.rawQuery("SELECT * FROM EMPLOYEE");
+    final res = await db.rawQuery("SELECT * FROM Employee");
 
     List<Employee> list =
         res.isNotEmpty ? res.map((c) => Employee.fromJson(c)).toList() : [];

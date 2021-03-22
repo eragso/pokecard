@@ -73,7 +73,7 @@ class _Mazo extends State<Mazo> {
                               },
                               onSearch: (text) {
                                 print('Filter Query: $text');
-                                return getData(nombre_carta: text);
+                                return getData(nombrecarta: text);
                               },
                               searchResultSettings: SearchResultSettings(
                                 padding: EdgeInsets.only(left: 8.0, top: 0, right: 8.0),
@@ -187,18 +187,18 @@ class _Mazo extends State<Mazo> {
       ],
     );
   }
+}
 
-  Future<List<ModelExample>> getData({nombre_carta}) async {
+Future<List<ModelExample>> getData({nombrecarta}) async {
     var response = await Dio().get(
       "http://estanteriaserver.ddns.net/api/Cartas",
       //"https://5f24717b3b9d35001620456b.mockapi.io/user",
-      queryParameters: {"nombre_carta": nombre_carta},
+      queryParameters: {"nombre_carta": nombrecarta},
     );
 
     var result = ModelExample.fromJsonList(response.data);
     return result;
   }
-}
 
 class ModelExample {
   final String nombrecarta;
@@ -229,4 +229,4 @@ class ModelExample {
 
   @override
   int get hashCode => nombrecarta.hashCode ^ tipocarta.hashCode;
-}  
+} 

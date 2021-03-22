@@ -7,14 +7,14 @@ String employeeToJson(List<Employee> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Employee {
-  int id;
+  int id_carta;
   String email;
   String firstName;
   String lastName;
 
 
   Employee({
-    this.id,
+    this.id_carta,
     this.email,
     this.firstName,
     this.lastName,
@@ -22,18 +22,18 @@ class Employee {
   });
 
   factory Employee.fromJson(Map<String, dynamic> json) => Employee(
-        id: json["id"],
-        email: json["email"],
-        firstName: json["firstName"],
-        lastName: json["lastName"],
+        id_carta: json["id_carta"],
+        email: json["nombre_carta"],
+        firstName: json["tipo_carta"],
+        lastName: json["PSA"],
 
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "email": email,
-        "firstName": firstName,
-        "lastName": lastName,
+        "id_carta": id_carta,
+        "nombre_carta": email,
+        "tipo_carta": firstName,
+        "PSA": lastName,
 
       };
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokecard/api/apihome.dart';
+import 'package:pokecard/api/apihome2.dart';
 import 'package:pokecard/cartas.dart';
 import 'package:pokecard/class_builder.dart';
 import 'package:pokecard/home.dart';
@@ -40,7 +41,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           icon: Icon(Icons.map, color: Colors.white),
-          page: ApiHome(),
+          page: Api(),
         ),
         KFDrawerItem.initWithPage(
           text: Text(

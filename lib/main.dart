@@ -6,7 +6,6 @@ import 'package:pokecard/login.dart';
 import 'package:pokecard/main2.dart';
 import 'package:pokecard/class_builder.dart';
 
-
 void main() {
   ClassBuilder.registerClasses();
   runApp(MyApp());
