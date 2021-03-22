@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokecard/api/rest_api.dart';
 
 class AuthThreePage extends StatefulWidget {
   static final String path = "lib/login/auth3.dart";
@@ -189,11 +190,15 @@ class _AuthThreePageState extends State<AuthThreePage> {
   }
 }
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({
-    Key key,
-  }) : super(key: key);
+class LoginForm extends StatefulWidget {
+  LoginForm({Key key}) : super(key: key);
 
+  _LoginForm createState() => _LoginForm();
+}
+
+class _LoginForm extends State<LoginForm> {
+  final _userName = TextEditingController();
+  final _userPassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -237,11 +242,16 @@ class LoginForm extends StatelessWidget {
   }
 }
 
-class SignupForm extends StatelessWidget {
-  const SignupForm({
-    Key key,
-  }) : super(key: key);
+class SignupForm extends StatefulWidget {
+  SignupForm({Key key}) : super(key: key);
 
+  _SignupForm createState() => _SignupForm();
+}
+
+class _SignupForm extends State<SignupForm> {
+  final _userName = TextEditingController();
+  final _userPassword = TextEditingController();
+  final _userPasswordConfirm = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -255,6 +265,7 @@ class SignupForm extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         children: <Widget>[
           TextField(
+            controller: _userName,
             decoration: InputDecoration(
               hintText: "Nombre de usuario",
               border: OutlineInputBorder(),
@@ -263,6 +274,7 @@ class SignupForm extends StatelessWidget {
           const SizedBox(height: 10.0),
           TextField(
             obscureText: true,
+            controller: _userPassword,
             decoration: InputDecoration(
               hintText: "Contraseña",
               border: OutlineInputBorder(),
@@ -271,6 +283,7 @@ class SignupForm extends StatelessWidget {
           const SizedBox(height: 10.0),
           TextField(
             obscureText: true,
+            controller: _userPasswordConfirm,
             decoration: InputDecoration(
               hintText: "Confirmar contraseña",
               border: OutlineInputBorder(),
@@ -285,7 +298,66 @@ class SignupForm extends StatelessWidget {
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Text("Inscribirse"),
-            onPressed: () {},
+            onPressed: () {
+                  final body = {
+                    "usuario1": _userName.text,
+                    "contrasena": _userPassword.text,
+                  };
+                  if (_userPasswordConfirm.text == _userPassword.text){
+                  ApiService.addUsuario(body).then((success) {
+                      if (success) {
+                      showDialog(
+                        builder: (context) => AlertDialog(
+                          title: Text('Usuario creado con éxito!'),
+                          actions: <Widget>[
+                            FlatButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                _userName.text = '';
+                                _userPassword.text = '';
+                              },
+                              child: Text('OK'),
+                            )
+                          ],
+                        ),
+                        context: context,
+                      );
+                      return;
+                    }else{
+                      showDialog(
+                        builder: (context) => AlertDialog(
+                          title: Text('Error Creando Usuario!!!'),
+                          actions: <Widget>[
+                            FlatButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text('OK'),
+                            )
+                          ],
+                        ),
+                        context: context,
+                      );
+                      return;
+                    }                    
+                  });
+                    }else{
+                      showDialog(
+                        builder: (context) => AlertDialog(
+                          title: Text('Las contraseñas no son iguales!!'),
+                          actions: <Widget>[
+                            FlatButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text('OK'),
+                            )
+                          ],
+                        ),
+                        context: context,
+                      );
+                    }
+                },
           ),
         ],
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokecard/api2/rest_api.dart';
+import 'package:pokecard/api/rest_api.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 
 class Api extends KFDrawerContent {
@@ -15,7 +15,7 @@ class _Api extends State<Api> {
         title: Text('Flutter REST API'),
       ),
       body: FutureBuilder(
-        future: ApiService.getEmployees(),
+        future: ApiService.getCartas(),
         builder: (context, snapshot) {
           final employees = snapshot.data;
           if (snapshot.connectionState == ConnectionState.done) {
@@ -98,7 +98,7 @@ class _AddNewEmployeePageState extends State<AddNewEmployeePage> {
                     "nombre_carta": _employeeNameController.text,
                     "tipo_carta": _employeeAge.text,
                   };
-                  ApiService.addEmployee(body).then((success) {
+                  ApiService.addCartas(body).then((success) {
                     if (success) {
                       showDialog(
                         builder: (context) => AlertDialog(
