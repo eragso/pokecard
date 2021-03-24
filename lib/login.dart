@@ -244,9 +244,10 @@ class _LoginForm extends State<LoginForm> {
                   };
                   ApiService.buscarUsuario(_userName.text, _userPassword.text).then((success) {
                     bool verify = false;
-                    print(success.contains(_userName.text));
+                    if(success.contains(_userName.text) && success.contains(_userPassword.text)){
+                        verify = true;
+                    }
                     print(success);
-                    print(success.contains('Ericland'));
                     //success.contains(Usuario(usuario1:_userName.text, contrasena:_userName.text));
                     //final usuarios = new Usuarios.fromJsonList([]);
                     if (verify) {
