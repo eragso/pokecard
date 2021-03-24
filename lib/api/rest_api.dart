@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
+import 'package:pokecard/api/usuario_model.dart';
 
 class URLS {
   static const String BASE_URL = 'http://estanteriaserver.ddns.net/api';
@@ -54,5 +56,68 @@ class ApiService {
     } else {
       return false;
     }
+  } 
+
+  static Future<List<UsuarioLog>> buscarUsuario( usuario1, contrasena ) async {
+
+    var response = await Dio().get(
+      "http://estanteriaserver.ddns.net/api/Usuario",
+      queryParameters: {"usuario1": usuario1, "contrasena": contrasena},
+    );
+    var result = UsuarioLog.fromJsonList(response.data);
+    return result;
+
   }
+
+  /*static Future<List<Usuario>> buscarUsuario( String query) async {
+
+    final url = Uri.https(URLS.BASE_URL, 'Usuario', {
+      'query'    : query
+    });
+    print(query);
+    return await _procesarRespuesta(url);
+
+  }
+
+  static Future<List<Usuario>> _procesarRespuesta(Uri url) async {
+
+    final resp = await http.get( url );
+    final decodedData = json.decode(resp.body);
+
+    final usuarios = new Usuarios.fromJsonList(decodedData['results']);
+    print(usuarios);
+
+    return usuarios.items;
+  }*/
+}
+
+class UsuarioLog {
+  final String usuario1;
+  final String contrasena;
+
+  UsuarioLog({this.usuario1, this.contrasena});
+
+  @override
+  String toString() {
+    return '$usuario1, $contrasena';
+  }
+
+  factory UsuarioLog.fromJson(Map<String, dynamic> json) {
+    if (json == null) return null;
+    return UsuarioLog(
+      usuario1: json["usuario1"],
+      contrasena: json["contrasena"],
+    );
+  }
+
+  static List<UsuarioLog> fromJsonList(List list) {
+    if (list == null) return null;
+    return list.map((item) => UsuarioLog.fromJson(item)).toList();
+  }
+
+  @override
+  operator ==(object) => this.usuario1.contains(object) || this.contrasena.contains(object);
+
+  @override
+  int get hashCode => usuario1.hashCode ^ contrasena.hashCode;
 }

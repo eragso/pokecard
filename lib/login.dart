@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokecard/api/rest_api.dart';
+import 'package:pokecard/api/usuario_model.dart';
 
 class AuthThreePage extends StatefulWidget {
   static final String path = "lib/login/auth3.dart";
@@ -212,6 +213,7 @@ class _LoginForm extends State<LoginForm> {
         padding: const EdgeInsets.all(16.0),
         children: <Widget>[
           TextField(
+            controller: _userName,
             decoration: InputDecoration(
               hintText: "Nombre de usuario",
               border: OutlineInputBorder(),
@@ -220,6 +222,7 @@ class _LoginForm extends State<LoginForm> {
           const SizedBox(height: 10.0),
           TextField(
             obscureText: true,
+            controller: _userPassword,
             decoration: InputDecoration(
               hintText: "Constraseña",
               border: OutlineInputBorder(),
@@ -234,7 +237,42 @@ class _LoginForm extends State<LoginForm> {
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Text("Acceder"),
-            onPressed: () {},
+            onPressed: () {
+              final body = {
+                    "usuario1": _userName.text,
+                    "contrasena": _userPassword.text,
+                  };
+                  ApiService.buscarUsuario(_userName.text, _userPassword.text).then((success) {
+                    bool verify = false;
+                    print(success.contains(_userName.text));
+                    print(success);
+                    print(success.contains('Ericland'));
+                    //success.contains(Usuario(usuario1:_userName.text, contrasena:_userName.text));
+                    //final usuarios = new Usuarios.fromJsonList([]);
+                    if (verify) {
+                      Navigator.pushNamed(context, 'menu');
+                      return;
+                    }else{
+                      showDialog(
+                        builder: (context) => AlertDialog(
+                          title: Text('Credenciales Incorrectas!!!'),
+                          actions: <Widget>[
+                            FlatButton(
+                              onPressed: () {
+                                _userName.text = '';
+                                _userPassword.text = '';
+                                Navigator.pop(context);
+                              },
+                              child: Text('OK'),
+                            )
+                          ],
+                        ),
+                        context: context,
+                      );
+                      return;
+                    }                    
+                  });                  
+            },
           ),
         ],
       ),
@@ -315,6 +353,7 @@ class _SignupForm extends State<SignupForm> {
                                 Navigator.pop(context);
                                 _userName.text = '';
                                 _userPassword.text = '';
+                                _userPasswordConfirm.text = '';
                               },
                               child: Text('OK'),
                             )

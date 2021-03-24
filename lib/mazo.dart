@@ -225,7 +225,7 @@ class ModelExample {
   }
 
   @override
-  operator ==(object) => this.nombrecarta.toLowerCase().contains(object.toLowerCase()) || this.tipocarta.toLowerCase().contains(object.toLowerCase);
+  operator ==(object) => this.nombrecarta.toLowerCase().contains(object.toLowerCase()) || this.tipocarta.toLowerCase().contains(object.toLowerCase());
 
   @override
   int get hashCode => nombrecarta.hashCode ^ tipocarta.hashCode;
