@@ -18,16 +18,75 @@ class _mapa extends State<mapa>{
   GoogleMapController _mapController;
   @override
   Widget build(BuildContext context){
-    return GoogleMap(
-      initialCameraPosition: CameraPosition(
-        target: widget.PointSds,
-        zoom: 12,
+    return Scaffold(
+      body: Center(
+      child: Container(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ), 
+        child: ListView(
+          children: <Widget>[
+              Row(
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                    child: Material(
+                      shadowColor: Colors.transparent,
+                      color: Colors.transparent,
+                      child: FlatButton(
+                        onPressed: widget.onMenuPressed,
+                        padding: EdgeInsets.all(0.0),
+                        child: Image.asset('images/pokeball.png', height: 40, width: 40,))
+                    ),
+                  ),
+                  Spacer(flex:4),
+                  Text("Mapa", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+                  Spacer(flex: 4),
+                  Container(
+                    height: 40,
+                    width: 70,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: AssetImage('images/pokecard.png'),
+                          fit: BoxFit.fill)),
+                  ),
+                  SizedBox(width: 15)
+                ],
+              ), 
+              Padding(
+                padding: EdgeInsets.only(left: 15, top: 5, right: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      height: 550,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 5.0, color: Colors.red),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Colors.blue[900],
+                        ),
+                        child: GoogleMap(
+                          initialCameraPosition: CameraPosition(
+                            target: widget.PointSds,
+                            zoom: 12,
+                          ),
+                          markers: _createMarkers(),
+                          onMapCreated: _onMapCreated,
+                          myLocationEnabled: true,
+                          myLocationButtonEnabled: true,
+                        ),
+                        ), 
+                  ],
+                ), 
+              ),
+        ],
       ),
-      markers: _createMarkers(),
-      onMapCreated: _onMapCreated,
-      myLocationEnabled: true,
-      myLocationButtonEnabled: true,
+    )
+    )
     );
+    
   }
   Set<Marker> _createMarkers() {
     var tmp = Set<Marker>();
