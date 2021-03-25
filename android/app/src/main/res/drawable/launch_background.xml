@@ -7,6 +7,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/pokecard" />
+            android:src="@drawable/pikachu" />
     </item>
 </layer-list>

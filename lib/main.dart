@@ -52,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Scaffold(
             body: AuthThreePage()
           ),
+          
           IgnorePointer(
             child: AnimationScreen(
               color: Theme.of(context).accentColor

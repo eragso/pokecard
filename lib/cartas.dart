@@ -160,6 +160,7 @@ class _Cartas extends State<Cartas> {
                                     return ListTile(
                                       title: Text(employees[index]['nombre_carta']),
                                       subtitle: Text('Tipo: ${employees[index]['tipo_carta']}'),
+                                      leading: Image(image: NetworkImage(employees[index]['imagen_carta']))
                                     );
                                   },
                                   itemCount: employees.length,

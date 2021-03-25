@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokecard/Maps/mapa.dart';
 import 'package:pokecard/QR/homePage.dart';
+import 'package:pokecard/actualizaciones.dart';
 import 'package:pokecard/cartas.dart';
 import 'package:pokecard/class_builder.dart';
 import 'package:pokecard/home.dart';
@@ -75,6 +76,14 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
           ),
           icon: Icon(Icons.file_upload, color: Colors.white),
           page: SubeCartasMenu(),
+        ),
+        KFDrawerItem.initWithPage(
+          text: Text(
+            'Actualizaciones',
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+          icon: Icon(Icons.ondemand_video, color: Colors.white),
+          page: Actualizaciones(),
         ),
         KFDrawerItem.initWithPage(
           text: Text(

@@ -258,7 +258,7 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-    Widget listItem(String imgpath) {
+  Widget listItem(String imgpath) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(

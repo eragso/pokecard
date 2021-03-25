@@ -9,6 +9,7 @@ import 'package:pokecard/api/apihome2.dart';
 import 'package:pokecard/Maps/mapa.dart';
 import 'package:pokecard/QR/homePage.dart';
 import 'package:pokecard/main2.dart';
+import 'package:pokecard/actualizaciones.dart';
 
 typedef T Constructor<T>();
 
@@ -32,7 +33,8 @@ class ClassBuilder {
     register<Api>(() => Api());
     register<HomePage>(() => HomePage());
     register<mapa>(() => mapa());
-    register<MainWidget>(() => MainWidget());   
+    register<MainWidget>(() => MainWidget()); 
+    register<Actualizaciones>(() => Actualizaciones());   
 
   }
 
