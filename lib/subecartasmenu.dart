@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:pokecard/api/rest_api.dart';
 
-class SubeCartas extends KFDrawerContent {
+class SubeCartasMenu extends KFDrawerContent {
   @override
-  _SubeCartas createState() => _SubeCartas();
+  _SubeCartasMenu createState() => _SubeCartasMenu();
 }
 
-class _SubeCartas extends State<SubeCartas> {
+class _SubeCartasMenu extends State<SubeCartasMenu> {
   final _nombrecarta = TextEditingController();
   final _generacion = TextEditingController();
   final _tipocarta = TextEditingController();
@@ -23,31 +23,35 @@ class _SubeCartas extends State<SubeCartas> {
           ), 
         child: ListView(
           children: <Widget>[
-            new Row(
+            Row(
               children: <Widget>[
-                new IconButton(
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
+                ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                  child: Material(
+                    shadowColor: Colors.transparent,
+                    color: Colors.transparent,
+                    child: FlatButton(
+                      onPressed: widget.onMenuPressed,
+                      padding: EdgeInsets.all(0.0),
+                      child: Image.asset('images/pokeball.png', height: 40, width: 40,))
+                    ),
                   ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                Spacer(),
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                          image: AssetImage('images/descarga.jpg'),
-                          fit: BoxFit.cover)),
-                ),
-                SizedBox(width: 15)
-              ],
-            ),
-                            Padding(
+                  Spacer(flex: 2),
+                  Text("Sube Cartas", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+                  Spacer(flex: 4),
+                  Container(
+                    height: 40,
+                    width: 70,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: AssetImage('images/pokecard.png'),
+                          fit: BoxFit.fill)),
+                  ),
+                  SizedBox(width: 15)
+                ],
+              ),
+              Padding(
                 padding: EdgeInsets.only(left: 15, top: 55, right: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

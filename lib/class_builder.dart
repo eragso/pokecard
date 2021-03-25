@@ -2,6 +2,7 @@ import 'package:pokecard/home.dart';
 import 'package:pokecard/login.dart';
 import 'package:pokecard/mazo.dart';
 import 'package:pokecard/subecartas.dart';
+import 'package:pokecard/subecartasmenu.dart';
 import 'package:pokecard/settings.dart';
 import 'package:pokecard/cartas.dart';
 import 'package:pokecard/api/apihome2.dart';
@@ -25,13 +26,13 @@ class ClassBuilder {
     register<AuthThreePage>(() => AuthThreePage());
     register<Mazo>(() => Mazo());
     register<SubeCartas>(() => SubeCartas());
+    register<SubeCartasMenu>(() => SubeCartasMenu());
     register<Settings>(() => Settings());
     register<Cartas>(() => Cartas());
     register<Api>(() => Api());
     register<HomePage>(() => HomePage());
     register<mapa>(() => mapa());
-    register<MainWidget>(() => MainWidget());
-    
+    register<MainWidget>(() => MainWidget());   
 
   }
 

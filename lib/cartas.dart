@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pokecard/infocard.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:pokecard/infopage.dart';
+import 'package:pokecard/api/rest_api.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_search/easy_search.dart';
+import 'package:pokecard/subecartas.dart';
 
 class Cartas extends KFDrawerContent {
   @override
@@ -124,7 +126,7 @@ class _Cartas extends State<Cartas> {
                           Container(
                           padding: EdgeInsets.only(top: 13),
                           height: 404,
-                          child: GridView.count(
+                          /*child: GridView.count(
                             padding: EdgeInsets.only(top: 13, left: 7),
                             crossAxisCount: 4,
                             children: List.generate(52, (index) {
@@ -141,6 +143,32 @@ class _Cartas extends State<Cartas> {
                                 ),*/
                               );
                             }),
+                          ),*/
+                          child: FutureBuilder(
+                            future: ApiService.getCartas(),
+                            builder: (context, snapshot) {
+                              final employees = snapshot.data;
+                              if (snapshot.connectionState == ConnectionState.done) {
+                                return ListView.separated(
+                                  separatorBuilder: (context, index) {
+                                    return Divider(
+                                      height: 2,
+                                      color: Colors.black,
+                                    );
+                                  },
+                                  itemBuilder: (context, index) {
+                                    return ListTile(
+                                      title: Text(employees[index]['nombre_carta']),
+                                      subtitle: Text('Tipo: ${employees[index]['tipo_carta']}'),
+                                    );
+                                  },
+                                  itemCount: employees.length,
+                                );
+                              }
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            },
                           ),
                             ),
                           ], 
@@ -152,7 +180,19 @@ class _Cartas extends State<Cartas> {
         ],
       ),
     )
-    )
+    ),
+    floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SubeCartas(),
+            ),
+          );
+        },
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
     );
   }
 
