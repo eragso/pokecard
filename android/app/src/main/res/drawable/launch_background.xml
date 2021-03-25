@@ -7,6 +7,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/tenor" />
+            android:src="@drawable/pokecard" />
     </item>
 </layer-list>
