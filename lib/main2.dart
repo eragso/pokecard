@@ -12,7 +12,8 @@ import 'package:pokecard/subecartasmenu.dart';
 
 //Clase principal
 class MainWidget extends StatefulWidget {
-  MainWidget({Key key, this.title}) : super(key: key);
+  final usuario;
+  MainWidget({Key key, this.title, this.usuario}) : super(key: key);
   final String title;
 
   @override
@@ -89,6 +90,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.usuario);
     return Scaffold(
       body: KFDrawer(
         controller: _drawerController,
@@ -114,7 +116,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    new Text('Eric Aguilo',
+                    new Text(widget.usuario,
                         style:
                             new TextStyle(fontSize: 17, color: Colors.white)),
                     new SizedBox(height: 2),

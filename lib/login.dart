@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokecard/api/rest_api.dart';
-import 'package:pokecard/api/usuario_model.dart';
+import 'package:pokecard/main2.dart';
 
 class AuthThreePage extends StatefulWidget {
   static final String path = "lib/login/auth3.dart";
@@ -251,7 +251,8 @@ class _LoginForm extends State<LoginForm> {
                     //success.contains(Usuario(usuario1:_userName.text, contrasena:_userName.text));
                     //final usuarios = new Usuarios.fromJsonList([]);
                     if (verify) {
-                      Navigator.pushNamed(context, 'menu');
+                      Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => MainWidget(usuario: _userName.text)));
                       return;
                     }else{
                       showDialog(
