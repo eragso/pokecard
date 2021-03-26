@@ -158,6 +158,10 @@ class _Cartas extends State<Cartas> {
                                   },
                                   itemBuilder: (context, index) {
                                     return ListTile(
+                                    onTap:(){
+                                      Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => InfoCard(imgPath: employees[index]['imagen_carta'],)));
+                                    },
                                       title: Text(employees[index]['nombre_carta']),
                                       subtitle: Text('Tipo: ${employees[index]['tipo_carta']}'),
                                       leading: Image(image: NetworkImage(employees[index]['imagen_carta']))

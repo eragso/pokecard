@@ -157,17 +157,44 @@ class _HomeState extends State<Home> {
                           Container(
                           padding: EdgeInsets.only(top: 5),
                           height: 120,
-                          child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            new SizedBox(width: 7),
-                            listCard('images/incineroar.png'),
-                            new SizedBox(width: 15),
-                            listCard('images/mcharizardex.png'),
-                            new SizedBox(width: 15),
-                            listCard('images/ponyta.png'),
-                          ],
-                        )
+                          child: FutureBuilder(
+                            future: ApiService.getCartas(),
+                            builder: (context, snapshot) {
+                              final employees = snapshot.data;
+                              print(employees[1]['imagen_carta']);
+                              if (snapshot.connectionState == ConnectionState.done) {  
+                                return ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: <Widget>[
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).push(MaterialPageRoute(
+                                          builder: (context) => InfoCard(imgPath: employees[1]['imagen_carta'],)));
+                                      },
+                                      child: Container(
+                                        width: 70,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          image: DecorationImage(image: NetworkImage(employees[1]['imagen_carta']), fit: BoxFit.fill),
+                                        ),
+                                      ),
+                                    ),
+                                    new SizedBox(width: 7),
+                                    listCard(employees[1]['imagen_carta']),
+                                    new SizedBox(width: 10),
+                                    listCard(employees[2]['imagen_carta']),
+                                    new SizedBox(width: 10),
+                                    listCard(employees[3]['imagen_carta']),
+                                    new SizedBox(width: 10),
+                                    listCard(employees[4]['imagen_carta']),
+                                  ],
+                                );
+                              }
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                          ),
                             ),
                           ], 
                         ), 
@@ -252,7 +279,7 @@ class _HomeState extends State<Home> {
         width: 70,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.fill),
+          image: DecorationImage(image: NetworkImage(imgpath), fit: BoxFit.fill),
         ),
       ),
     );
