@@ -156,19 +156,24 @@ class _HomeState extends State<Home> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                           Container(
-                          padding: EdgeInsets.only(top: 5),
                           height: 120,
-                          child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            new SizedBox(width: 7),
-                            listCard('images/incineroar.png'),
-                            new SizedBox(width: 15),
-                            listCard('images/mcharizardex.png'),
-                            new SizedBox(width: 15),
-                            listCard('images/ponyta.png'),
-                          ],
-                        )
+                          child: FutureBuilder(
+                            future: ApiService.getCartas(),
+                            builder: (context, snapshot) {
+                              final employees = snapshot.data;
+                              //employees.length;
+                              if (snapshot.connectionState == ConnectionState.done) {
+                                  return ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: new List.generate(employees.length, (index) => 
+                                  listCard(employees[index]['imagen_carta']),),                                  
+                                  );
+                              }
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            },
+                          ),
                             ),
                           ], 
                         ), 
@@ -253,7 +258,7 @@ class _HomeState extends State<Home> {
         width: 70,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.fill),
+          image: DecorationImage(image: NetworkImage(imgpath), fit: BoxFit.fill),
         ),
       ),
     );

@@ -71,7 +71,7 @@ class _InfoCard extends State<InfoCard> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     image: DecorationImage(
-                                      image: AssetImage(widget.imgPath), fit: BoxFit.fill)),
+                                      image: NetworkImage(widget.imgPath), fit: BoxFit.fill)),
                                 ),
                                 ),
                               ]
