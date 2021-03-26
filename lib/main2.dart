@@ -13,8 +13,9 @@ import 'package:pokecard/subecartasmenu.dart';
 
 //Clase principal
 class MainWidget extends StatefulWidget {
-  final usuario;
-  MainWidget({Key key, this.title, this.usuario}) : super(key: key);
+  String usuario;
+  String usuarioimagen;
+  MainWidget({Key key, this.title, this.usuario, this.usuarioimagen}) : super(key: key);
   final String title;
 
   @override
@@ -99,7 +100,15 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.usuario);
+    if (widget.usuarioimagen == "") {
+      print('Imagen vacia');
+      widget.usuarioimagen = 'https://cutt.ly/oxGa0TS';
+    }
+    if (widget.usuario == "") {
+      print('Invitado');
+      widget.usuario = 'Invitado';
+    }
+    print(widget.usuarioimagen);
     return Scaffold(
       body: KFDrawer(
         controller: _drawerController,
@@ -116,7 +125,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
                       image: DecorationImage(
-                          image: AssetImage('images/descarga.jpg'),
+                          image: NetworkImage(widget.usuarioimagen),
                           fit: BoxFit.cover)),
                 ),
                 SizedBox(

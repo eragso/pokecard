@@ -104,7 +104,7 @@ class _AuthThreePageState extends State<AuthThreePage> {
                   ],
                 ),
                 const SizedBox(height: 40.0),
-                /*OutlineButton.icon(
+                OutlineButton.icon(
                   borderSide: BorderSide(color: Colors.blue),
                   textColor: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -112,8 +112,9 @@ class _AuthThreePageState extends State<AuthThreePage> {
                   ),
                   icon: Icon(Icons.android),
                   label: Text("Continuar como invitado"),
-                  onPressed: () => Navigator.pushNamed(context, 'menu'),
-                ),*/
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => MainWidget(usuario: '', usuarioimagen: ''))),
+                ),
                 const SizedBox(height: 20.0),
               ],
             ),
@@ -200,6 +201,7 @@ class LoginForm extends StatefulWidget {
 class _LoginForm extends State<LoginForm> {
   final _userName = TextEditingController();
   final _userPassword = TextEditingController();
+  String _userImage;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -247,6 +249,7 @@ class _LoginForm extends State<LoginForm> {
                     for (var i=0; i < success.length; i++){
                       if (success[i]['usuario1'] == _userName.text){
                         if(success[i]['contrasena'] == _userPassword.text){
+                          _userImage = success[i]['imagen_usuario'];
                           verify = true;
                         }
                       }
@@ -259,7 +262,7 @@ class _LoginForm extends State<LoginForm> {
                     //final usuarios = new Usuarios.fromJsonList([]);
                     if (verify) {
                       Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => MainWidget(usuario: _userName.text)));
+                      builder: (context) => MainWidget(usuario: _userName.text, usuarioimagen: _userImage)));
                       return;
                     }else{
                       showDialog(
