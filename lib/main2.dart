@@ -62,14 +62,14 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
           icon: Icon(Icons.info, color: Colors.white),
           page: Cartas(),
         ),
-        KFDrawerItem.initWithPage(
+        /*KFDrawerItem.initWithPage(
           text: Text(
             'Mazo',
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           icon: Icon(Icons.source, color: Colors.white),
           page: Mazo(),
-        ),
+        ),*/
         KFDrawerItem.initWithPage(
           text: Text(
             'Sube Cartas',
@@ -100,8 +100,8 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.usuarioimagen == "") {
-      print('Imagen vacia');
+    if (widget.usuarioimagen == "notimage") {
+      print("Imagen vacia");
       widget.usuarioimagen = 'https://cutt.ly/oxGa0TS';
     }
     if (widget.usuario == "") {

@@ -352,6 +352,7 @@ class _SignupForm extends State<SignupForm> {
                   final body = {
                     "usuario1": _userName.text,
                     "contrasena": _userPassword.text,
+                    "imagen_usuario": "notimage",
                   };
                   if (_userPasswordConfirm.text == _userPassword.text){
                   ApiService.addUsuario(body).then((success) {

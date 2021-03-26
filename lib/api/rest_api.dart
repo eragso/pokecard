@@ -58,6 +58,15 @@ class ApiService {
     }
   } 
 
+  static Future<bool> actUsuario(body) async {
+    final response = await http.put('${URLS.BASE_URL}/Usuario', body: body);
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  } 
+
   static Future<List<UsuarioLog>> buscarUsuario( usuario1, contrasena ) async {
 
     var response = await Dio().get(

@@ -47,7 +47,7 @@ class _SubeCartas extends State<SubeCartas> {
                 SizedBox(width: 15)
               ],
             ),
-                            Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 15, top: 55, right: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

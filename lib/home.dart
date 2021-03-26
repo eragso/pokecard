@@ -14,6 +14,7 @@ class Home extends KFDrawerContent {
 }
 
 class _HomeState extends State<Home> {
+  List<dynamic> mercado;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

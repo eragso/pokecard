@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokecard/actualizarperfil.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 
 class Settings extends KFDrawerContent {
@@ -87,7 +88,14 @@ class _Settings extends State<Settings>  {
                     Icons.keyboard_arrow_right,
                     color: Colors.grey.shade400,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ActualizarPerfil(),
+                      ),
+                    );
+                  },
                 ),
                 SwitchListTile(
                   title: Text(
