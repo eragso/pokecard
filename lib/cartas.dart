@@ -76,7 +76,7 @@ class _Cartas extends State<Cartas> {
                 ),
               ),  
               Padding(
-                padding: EdgeInsets.only(left: 15, top: 5, right: 15),
+                padding: EdgeInsets.only(left: 15, top: 0, right: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
