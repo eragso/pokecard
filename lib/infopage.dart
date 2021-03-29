@@ -22,7 +22,7 @@ class _InfoPage extends State<InfoPage> {
           ), 
         child: ListView(
           children: <Widget>[
-            new Row(
+            Row(
               children: <Widget>[
                 new IconButton(
                   icon: Icon(
@@ -36,13 +36,13 @@ class _InfoPage extends State<InfoPage> {
                 Spacer(),
                 Container(
                   height: 40,
-                  width: 40,
+                  width: 70,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                          image: AssetImage('images/descarga.jpg'),
-                          fit: BoxFit.cover)),
-                ),
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: AssetImage('images/pokecard.png'),
+                      fit: BoxFit.fill)),
+                  ),
                 SizedBox(width: 15)
               ],
             ),
@@ -71,7 +71,7 @@ class _InfoPage extends State<InfoPage> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     image: DecorationImage(
-                                      image: AssetImage(widget.imgPath), fit: BoxFit.fill))),
+                                      image: NetworkImage(widget.imgPath), fit: BoxFit.fill))),
                                 ),
                               ]
                             ),

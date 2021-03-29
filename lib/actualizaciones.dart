@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokecard/infocard.dart';
 import 'package:kf_drawer/kf_drawer.dart';
-import 'package:pokecard/infopage.dart';
 
 class Actualizaciones extends KFDrawerContent {
   Actualizaciones({

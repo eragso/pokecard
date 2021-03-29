@@ -101,9 +101,9 @@ class _HomeState extends State<Home> {
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
                             new SizedBox(width: 7),
-                            listItem('images/news.png'),
+                            listItem('https://cutt.ly/Kx0LR6T'),
                             new SizedBox(width: 15),
-                            listItem('images/leyendas.jpg'),
+                            listItem('https://cutt.ly/ox0LGdV'),
                           ],
                         )
                             ),
@@ -165,8 +165,8 @@ class _HomeState extends State<Home> {
                               if (snapshot.connectionState == ConnectionState.done) {
                                   return ListView(
                                   scrollDirection: Axis.horizontal,
-                                  children: new List.generate(employees.length, (index) => 
-                                  listCard(employees[index]['imagen_carta']),),                                  
+                                  children: new List.generate(employees.length, (index) =>  
+                                  listCard(employees[index]['imagen_carta'],),),                                  
                                   );
                               }
                               return Center(
@@ -218,25 +218,23 @@ class _HomeState extends State<Home> {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Colors.blue[900],
                         ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                          Container(
-                          padding: EdgeInsets.only(top: 13),
-                          height: 120,
-                          child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            new SizedBox(width: 7),
-                            listItem('images/e_leyendas.jpeg'),
-                            new SizedBox(width: 15),
-                            listItem('images/e_2021.jpg'),
-                          ],
-                        )
-                            ),
-                          ], 
-                        ), 
+                        child: FutureBuilder(
+                            future: ApiService.getEventos(),
+                            builder: (context, snapshot) {
+                              final employees = snapshot.data;
+                              //employees.length;
+                              if (snapshot.connectionState == ConnectionState.done) {
+                                  return ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: new List.generate(employees.length, (index) => 
+                                  listItem(employees[index]['imagen_evento']),),                                  
+                                  );
+                              }
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            },
+                          ),
                         ), 
                   ],
                 ), 
@@ -274,7 +272,7 @@ class _HomeState extends State<Home> {
         decoration: BoxDecoration(
           border: Border.all(width: 4.0, color: Colors.yellow),
           borderRadius: BorderRadius.all(Radius.circular(0)),
-          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.fill),
+          image: DecorationImage(image: NetworkImage(imgpath), fit: BoxFit.fill),
         ),
       ),
     );

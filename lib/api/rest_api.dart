@@ -67,6 +67,15 @@ class ApiService {
     }
   } 
 
+    static Future<List<dynamic>> getEventos() async {
+    final response = await http.get('${URLS.BASE_URL}/Eventos');
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      return null;
+    }
+  }
+
   static Future<List<UsuarioLog>> buscarUsuario( usuario1, contrasena ) async {
 
     var response = await Dio().get(
