@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 import 'package:kf_drawer/kf_drawer.dart';
+import 'dart:io';
 
 class Actualizaciones extends KFDrawerContent {
   Actualizaciones({
@@ -11,6 +13,18 @@ class Actualizaciones extends KFDrawerContent {
 }
 
 class _Actualizaciones extends State<Actualizaciones> {
+  VideoPlayerController _controller;
+  final File file = File('videos/BattleStyles.mp4');
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset('videos/BattleStyles.mp4')
+      ..initialize().then((_) {
+        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+        setState(() {});
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +49,7 @@ class _Actualizaciones extends State<Actualizaciones> {
                     ),
                   ),
                   Spacer(flex:4),
-                  Text("Menu Principal", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+                  Text("Actualizaciones", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
                   Spacer(flex: 4),
                   Container(
                     height: 40,
@@ -65,7 +79,7 @@ class _Actualizaciones extends State<Actualizaciones> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text("Noticias", style: TextStyle(fontSize: 30.0, color: Colors.yellow), 
+                            Text("Video", style: TextStyle(fontSize: 30.0, color: Colors.yellow), 
                             ),
                           ]
                         ),
@@ -79,7 +93,7 @@ class _Actualizaciones extends State<Actualizaciones> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                        height: 150,
+                        height: 500,
                         width: double.infinity,
                         decoration: BoxDecoration(
                         border: Border.all(width: 5.0, color: Colors.red),
@@ -91,17 +105,14 @@ class _Actualizaciones extends State<Actualizaciones> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                           Container(
-                          padding: EdgeInsets.only(top: 13),
-                          height: 120,
-                          child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            new SizedBox(width: 7),
-                            listItem('images/news.png'),
-                            new SizedBox(width: 15),
-                            listItem('images/leyendas.jpg'),
-                          ],
-                        )
+                          padding: EdgeInsets.only(top: 13, left: 13, right: 13, bottom: 13),
+                          height: 490,
+                          child: _controller.value.initialized
+                            ? AspectRatio(
+                                aspectRatio: _controller.value.aspectRatio,
+                                child: VideoPlayer(_controller),
+                              )
+                            : Container(),
                             ),
                           ], 
                         ), 
@@ -112,19 +123,24 @@ class _Actualizaciones extends State<Actualizaciones> {
         ],
       ),
     )
-    )
+    ),
+    floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              _controller.value.isPlaying
+                  ? _controller.pause()
+                  : _controller.play();
+            });
+          },
+          child: Icon(
+            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+          ),
+        ),
     );
   }
-  Widget listItem(String imgpath) {
-    return InkWell(
-      child: Container(
-        width: 145,
-        decoration: BoxDecoration(
-          border: Border.all(width: 4.0, color: Colors.yellow),
-          borderRadius: BorderRadius.all(Radius.circular(0)),
-          image: DecorationImage(image: AssetImage(imgpath), fit: BoxFit.fill),
-        ),
-      ),
-    );
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 }

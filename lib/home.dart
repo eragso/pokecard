@@ -100,10 +100,10 @@ class _HomeState extends State<Home> {
                           child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            new SizedBox(width: 7),
-                            listItem('https://cutt.ly/Kx0LR6T'),
-                            new SizedBox(width: 15),
-                            listItem('https://cutt.ly/ox0LGdV'),
+                            //new SizedBox(width: 7),
+                            listItem('https://cutt.ly/Kx0LR6T', 'P&P Noticias', 'Pagina de noticias actualizada'),
+                            //new SizedBox(width: 15),
+                            listItem('https://cutt.ly/ox0LGdV', 'Leyendas Pokemon: Arceus', 'Nuevo juego de Pokemon 2022'),
                           ],
                         )
                             ),
@@ -227,7 +227,7 @@ class _HomeState extends State<Home> {
                                   return ListView(
                                   scrollDirection: Axis.horizontal,
                                   children: new List.generate(employees.length, (index) => 
-                                  listItem(employees[index]['imagen_evento']),),                                  
+                                  listItem(employees[index]['imagen_evento'],employees[index]['nombre_evento'], employees[index]['descripcion_evento']),),                                  
                                   );
                               }
                               return Center(
@@ -250,7 +250,7 @@ class _HomeState extends State<Home> {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => InfoCard(imgPath: imgpath,)));
+          builder: (context) => InfoCard(imgPath: imgpath)));
       },
       child: Container(
         width: 70,
@@ -261,11 +261,11 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-  Widget listItem(String imgpath) {
+  Widget listItem(String imgpath, title, desc) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => InfoPage(imgPath: imgpath,)));
+          builder: (context) => InfoPage(imgPath: imgpath, title: title, desc: desc,)));
       },
       child: Container(
         width: 145,

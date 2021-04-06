@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class InfoPage extends StatefulWidget {
-  final imgPath;
+  final imgPath, title, desc;
 
-  InfoPage({Key key, this.imgPath}) : super(key: key);
+  InfoPage({Key key, this.imgPath, this.title, this.desc}) : super(key: key);
 
   @override
   _InfoPage createState() => _InfoPage();
@@ -99,13 +99,13 @@ class _InfoPage extends State<InfoPage> {
                             Padding(
                             padding: EdgeInsets.only(top: 5),
                             child: Column( children: [
-                            Text('TITULO', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,)),
+                            Text(widget.title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,)),
                             ],),
                             ),
                             Padding( 
                             padding: EdgeInsets.only(left: 5, top: 5, right: 5),
                             child: Row( children: [
-                              Text('INFOoooooooooooooooooooooooooooooooooo \nMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'),
+                              Text(widget.desc),
                               ], ), ),
                             ],
                         ),
