@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokecard/subecartas.dart';
 
 class InfoCard extends StatefulWidget {
   final imgPath;
@@ -128,7 +129,14 @@ class _InfoCard extends State<InfoCard> {
                                 textColor: Colors.yellow,
                                 child: Text("Vender", style: TextStyle(fontSize: 25.0,),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SubeCartas(imgPath: widget.imgPath,),
+                                  ),
+                                );
+                                },
                               )
                             )
                           ], 

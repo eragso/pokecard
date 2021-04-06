@@ -104,6 +104,7 @@ class _HomeState extends State<Home> {
                             listItem('https://cutt.ly/Kx0LR6T', 'P&P Noticias', 'Pagina de noticias actualizada'),
                             //new SizedBox(width: 15),
                             listItem('https://cutt.ly/ox0LGdV', 'Leyendas Pokemon: Arceus', 'Nuevo juego de Pokemon 2022'),
+                            listItem('https://cutt.ly/xcPwVK2', 'Especuladores arrasan', 'Arrassan cartas en el Happy Meal'),
                           ],
                         )
                             ),
@@ -218,6 +219,13 @@ class _HomeState extends State<Home> {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Colors.blue[900],
                         ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                          Container(
+                          height: 120,
                         child: FutureBuilder(
                             future: ApiService.getEventos(),
                             builder: (context, snapshot) {
@@ -235,6 +243,9 @@ class _HomeState extends State<Home> {
                               );
                             },
                           ),
+                          )
+                  ],
+                ),
                         ), 
                   ],
                 ), 

@@ -3,6 +3,9 @@ import 'package:kf_drawer/kf_drawer.dart';
 import 'package:pokecard/api/rest_api.dart';
 
 class SubeCartas extends KFDrawerContent {
+  final imgPath;
+
+  SubeCartas({Key key, this.imgPath});
   @override
   _SubeCartas createState() => _SubeCartas();
 }
@@ -37,13 +40,13 @@ class _SubeCartas extends State<SubeCartas> {
                 Spacer(),
                 Container(
                   height: 40,
-                  width: 40,
+                  width: 70,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                          image: AssetImage('images/descarga.jpg'),
-                          fit: BoxFit.cover)),
-                ),
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: AssetImage('images/pokecard.png'),
+                      fit: BoxFit.fill)),
+                  ),
                 SizedBox(width: 15)
               ],
             ),
@@ -72,7 +75,7 @@ class _SubeCartas extends State<SubeCartas> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     image: DecorationImage(
-                                      image: AssetImage('images/incineroar.png'), fit: BoxFit.fill)),
+                                      image: NetworkImage(widget.imgPath), fit: BoxFit.fill)),
                                 ),
                                 ),
                               ]

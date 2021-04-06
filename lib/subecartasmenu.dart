@@ -76,7 +76,7 @@ class _SubeCartasMenu extends State<SubeCartasMenu> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     image: DecorationImage(
-                                      image: AssetImage('images/incineroar.png'), fit: BoxFit.fill)),
+                                      image: NetworkImage('https://cutt.ly/wcPdlwn'), fit: BoxFit.fill)),
                                 ),
                                 ),
                               ]
