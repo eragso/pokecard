@@ -191,7 +191,7 @@ class _Cartas extends State<Cartas> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SubeCartas(),
+              builder: (context) => SubeCartas(imgPath: 'https://cutt.ly/wcPdlwn'),
             ),
           );
         },
