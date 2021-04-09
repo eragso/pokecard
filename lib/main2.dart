@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokecard/Maps/mapa.dart';
-import 'package:pokecard/QR/homePage.dart';
+import 'package:pokecard/QR/qrdefinitivo.dart';
 import 'package:pokecard/actualizaciones.dart';
 import 'package:pokecard/cartas.dart';
 import 'package:pokecard/class_builder.dart';
@@ -52,7 +52,7 @@ class _MainWidgetState extends State<MainWidget> with TickerProviderStateMixin {
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           icon: Icon(Icons.qr_code_scanner, color: Colors.white),
-          page: HomePage(),
+          page: qrdefinitivo(),
         ),
         KFDrawerItem.initWithPage(
           text: Text(

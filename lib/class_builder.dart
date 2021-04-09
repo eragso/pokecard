@@ -7,7 +7,7 @@ import 'package:pokecard/settings.dart';
 import 'package:pokecard/cartas.dart';
 import 'package:pokecard/api/apihome2.dart';
 import 'package:pokecard/Maps/mapa.dart';
-import 'package:pokecard/QR/homePage.dart';
+import 'package:pokecard/QR/qrdefinitivo.dart';
 import 'package:pokecard/main2.dart';
 import 'package:pokecard/actualizaciones.dart';
 
@@ -31,7 +31,7 @@ class ClassBuilder {
     register<Settings>(() => Settings());
     register<Cartas>(() => Cartas());
     register<Api>(() => Api());
-    register<HomePage>(() => HomePage());
+    register<qrdefinitivo>(() => qrdefinitivo());
     register<mapa>(() => mapa());
     register<MainWidget>(() => MainWidget()); 
     register<Actualizaciones>(() => Actualizaciones());   
