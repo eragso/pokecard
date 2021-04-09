@@ -104,7 +104,7 @@ class _AuthThreePageState extends State<AuthThreePage> {
                   ],
                 ),
                 const SizedBox(height: 40.0),
-                OutlineButton.icon(
+                /*OutlineButton.icon(
                   borderSide: BorderSide(color: Colors.blue),
                   textColor: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -114,7 +114,7 @@ class _AuthThreePageState extends State<AuthThreePage> {
                   label: Text("Continuar como invitado"),
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => MainWidget(usuario: '', usuarioimagen: ''))),
-                ),
+                ),*/
                 const SizedBox(height: 20.0),
               ],
             ),
