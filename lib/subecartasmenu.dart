@@ -164,6 +164,7 @@ class _SubeCartasMenu extends State<SubeCartasMenu> {
                     "tipo_carta": _tipocarta.text,
                     "PSA": _psa.text,
                     "Hp": _hp.text,
+                    "imagen_carta": 'https://cutt.ly/wcPdlwn',
                   };
                   ApiService.addCartas(body).then((success) {
                     if (success) {
